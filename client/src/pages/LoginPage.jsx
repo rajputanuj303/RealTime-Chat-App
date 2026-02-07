@@ -17,8 +17,14 @@ const LoginPage = () => {
       <form className="border-2 bg-white/8 text-white border-gray-500 p-6 flex flex-col gap-6 rounded-lg shadow-lg">
         <h2 className="font-medium text-2xl flex justify-between items-center ">
           {currState}
-          {isDataSubmitted && <img onClick={()=>setIsDataSubmitted(false)} src={assets.arrow_icon} alt="" className="w-5 cursor-pointer" />}
-          
+          {isDataSubmitted && (
+            <img
+              onClick={() => setIsDataSubmitted(false)}
+              src={assets.arrow_icon}
+              alt=""
+              className="w-5 cursor-pointer"
+            />
+          )}
         </h2>
         {currState === "Sign up" && !isDataSubmitted && (
           <input
@@ -80,15 +86,24 @@ const LoginPage = () => {
             <p className="text-sm text-gray-600">
               Already have an account ?
               <span
-              onClick={()=>{setCurrState("Login"); setIsDataSubmitted(false)}} 
-              className="font-medium text-violet-500 cursor-pointer">Login Here</span>
+                onClick={() => {
+                  setCurrState("Login");
+                  setIsDataSubmitted(false);
+                }}
+                className="font-medium text-violet-500 cursor-pointer"
+              >
+                Login Here
+              </span>
             </p>
           ) : (
             <p className="text-sm text-gray-600">
-              Create an account ? 
-              <span 
-              onClick={()=>setCurrState("Sign up")} 
-              className="font-medium text-violet-500 cursor-pointer">Click Here</span>
+              Create an account ?
+              <span
+                onClick={() => setCurrState("Sign up")}
+                className="font-medium text-violet-500 cursor-pointer"
+              >
+                Click Here
+              </span>
             </p>
           )}
         </div>
