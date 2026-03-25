@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div
       className="bg-cover bg-center h-screen bg-no-repeat w-full relative"
-      style={{ backgroundImage: `url(${assets.bgImage})` }}
+      style={{ backgroundImage: "url('/bgImage.svg')" }}
     >
       <div className="absolute inset-0 backdrop-blur-sm z-0"></div>
       <div className="relative z-10 h-full">

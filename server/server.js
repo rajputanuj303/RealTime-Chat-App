@@ -23,7 +23,7 @@ export const userSocketMap = {}; //userId: socketId
 io.on("connection", (socket) => {
   const userId = socket.handshake.query.userId;
   console.log(`User connected: ${userId}, Socket ID: ${socket.id}`);
- 
+
   if (userId) userSocketMap[userId] = socket.id;
 
   // Emit Online user to all connected clients
@@ -47,6 +47,10 @@ app.use("/api/messages", messageRouter);
 //Connect to the database
 await connectDB();
 
-const PORT = process.env.PORT || 5000;
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  server.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
+}
 
-server.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
+// Exporting server for vercel
+export default server;
