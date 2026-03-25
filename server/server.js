@@ -23,16 +23,16 @@ export const userSocketMap = {}; //userId: socketId
 io.on("connection", (socket) => {
   const userId = socket.handshake.query.userId;
   console.log(`User connected: ${userId}, Socket ID: ${socket.id}`);
-
+ 
   if (userId) userSocketMap[userId] = socket.id;
 
   // Emit Online user to all connected clients
-  io.emit("getOnlineUser", Object.keys(userSocketMap));
+  io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
   socket.on("disconnect", () => {
     console.log(`User disconnected: ${userId}, Socket ID: ${socket.id}`);
     delete userSocketMap[userId];
-    io.emit("getOnlineUser", Object.keys(userSocketMap));
+    io.emit("getOnlineUsers", Object.keys(userSocketMap));
   });
 });
 
